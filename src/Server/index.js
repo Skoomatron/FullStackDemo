@@ -4,12 +4,12 @@ const express = require('express');
 const app = express();
 
 app.use(express.json());
-app.use('/', router);
+// app.use('/', router);
 app.use(express.static(path.join(__dirname, '../../dist')));
 
-const PORT = 3001;
+const PORT = 3002;
 
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
   console.log(`We in this port ${PORT} !`)
 });
 

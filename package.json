@@ -7,8 +7,8 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "server": "node src/Server/index.js",
-    "build-dev": "webpack --mode development",
+    "server": "nodemon src/Server/index.js",
+    "build-dev": "webpack --mode development -w",
     "test": "jest"
   },
   "dependencies": {
