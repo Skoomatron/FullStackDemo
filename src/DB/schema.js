@@ -4,6 +4,7 @@ mongoose.Promise = global.Promise;
 
 const colorData = new mongoose.Schema({
   color: String,
+  text: String,
 })
 
 

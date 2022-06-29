@@ -7,19 +7,46 @@ class App extends React.Component {
     super(props)
     this.state = {
       color: '',
-      allColors: [],
+      text: '',
+      allColors: [{color: 'red', text: 'red box'}],
     }
     this.textListener = this.textListener.bind(this);
     this.submit = this.submit.bind(this);
+    this.getData = this.getData.bind(this);
+  }
+
+  componentDidMount() {
+    // this.getData();
   }
 
   textListener(event) {
     const currentText = event.target.value;
-    this.setState({color: currentText})
+    this.setState({[event.target.name]: currentText})
   }
 
   submit() {
-    console.log('button clicked')
+    const payload = {
+      text: this.state.text,
+      color: this.state.color,
+    }
+    axios.post('/addColor', payload)
+    .then((success) => {
+      this.getData();
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+
+  }
+
+  getData() {
+    axios.get('/getColors')
+    .then((data) => {
+      this.setState({allColors: data})
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 
 
@@ -28,7 +55,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <ColorEnter listener={this.textListener} colorState={this.state.color} submitButton={this.submit}/>
+        <ColorEnter
+          listener={this.textListener}
+          colorState={this.state.color}
+          textState={this.state.text}
+          submitButton={this.submit}
+          dataArray={this.state.allColors}/>
         Trevor's Party Time Full Stack Play Palace
       </div>
     );

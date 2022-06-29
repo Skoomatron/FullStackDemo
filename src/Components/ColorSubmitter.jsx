@@ -3,7 +3,7 @@ import React from "react";
 import ColorMapper from './ColorMapper.jsx';
 
 const ColorSubmitter = (props) => {
-  console.log('Button Loaded', props)
+
   return (
     <div>
       <button onClick={() => {
@@ -11,7 +11,10 @@ const ColorSubmitter = (props) => {
       }}>
         Give Me Treasure Arrrrgg
       </button>
-      <ColorMapper/>
+      <ColorMapper
+      textState={props.textState}
+      listener={props.listener}
+      dataArray={props.dataArray}/>
     </div>
   )
 }

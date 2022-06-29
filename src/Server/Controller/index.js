@@ -1,7 +1,6 @@
 const model = require('../Model/index.js');
 
 const post = (req, res) => {
-  console.log("Request Inside Controller", req.body)
   model.postData(req.body)
   .then((success) => {
     res.status(201).send();
@@ -11,6 +10,17 @@ const post = (req, res) => {
   })
 }
 
+const get = (req, res) => {
+  model.getData()
+  .then((data) => {
+    res.status(200).send(data);
+  })
+  .catch((error) => {
+    res.status(404).send(error);
+  })
+}
+
 module.exports = {
   post,
+  get,
 }

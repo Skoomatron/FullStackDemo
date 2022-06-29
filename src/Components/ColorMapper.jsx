@@ -1,11 +1,19 @@
 // this will render a number of colored blocks to the DOM
 import React from "react";
+import TextEnter from './TextEnter.jsx';
 
-const ColorMapper = () => {
-  console.log('We About To Map Some Trash')
+const ColorMapper = (props) => {
+  console.log(props.dataArray)
   return (
     <div>
-
+      <TextEnter textState={props.textState} listener={props.listener}/>
+      {props.dataArray.map((arr, index) => {
+        return <div style={{
+          height: '50px',
+          width: '50px',
+          backgroundColor: `${arr.color}`
+      }}>{arr.text}</div>
+      })}
     </div>
   )
 }

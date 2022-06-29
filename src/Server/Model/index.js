@@ -2,11 +2,19 @@ const db = require('../../DB/index.js');
 const {Color} = require('../../DB/schema.js');
 
 const postData = (params) => {
-  console.log('Params Inside Model', params)
   try {
-    db.collection('color').insertOne({
+    db.collection('colors').insertOne({
       color: params.color,
+      text: params.text
     })
+  } catch (error) {
+    return error;
+  }
+}
+
+const getData = () => {
+  try {
+    return Color.find({});
   } catch (error) {
     return error;
   }
@@ -14,4 +22,5 @@ const postData = (params) => {
 
 module.exports = {
   postData,
+  getData,
 }
