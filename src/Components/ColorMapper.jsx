@@ -10,7 +10,8 @@ const ColorMapper = (props) => {
       {props.dataArray.map((arr, index) => {
         return <div style={{
           height: '50px',
-          width: '50px',
+          width: '200px',
+          margin: '10px',
           backgroundColor: `${arr.color}`
       }}>{arr.text}</div>
       })}

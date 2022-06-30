@@ -7,9 +7,9 @@ const ColorSubmitter = (props) => {
   return (
     <div>
       <button onClick={() => {
-        props.submitButton();
+        props.submitButton(event);
       }}>
-        Give Me Treasure Arrrrgg
+        Add Color
       </button>
       <ColorMapper
       textState={props.textState}

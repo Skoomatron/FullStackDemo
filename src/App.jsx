@@ -8,7 +8,7 @@ class App extends React.Component {
     this.state = {
       color: '',
       text: '',
-      allColors: [{color: 'red', text: 'red box'}],
+      allColors: [],
     }
     this.textListener = this.textListener.bind(this);
     this.submit = this.submit.bind(this);
@@ -16,7 +16,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // this.getData();
+    this.getData();
   }
 
   textListener(event) {
@@ -24,7 +24,8 @@ class App extends React.Component {
     this.setState({[event.target.name]: currentText})
   }
 
-  submit() {
+  submit(event) {
+    const buttonID = event.target.innerText;
     const payload = {
       text: this.state.text,
       color: this.state.color,
@@ -42,15 +43,12 @@ class App extends React.Component {
   getData() {
     axios.get('/getColors')
     .then((data) => {
-      this.setState({allColors: data})
+      this.setState({allColors: data.data})
     })
     .catch((error) => {
       console.log(error)
     })
   }
-
-
-
 
   render() {
     return (
