@@ -30,13 +30,24 @@ class App extends React.Component {
       text: this.state.text,
       color: this.state.color,
     }
-    axios.post('/addColor', payload)
-    .then((success) => {
-      this.getData();
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+
+    if (buttonID === 'Add Color') {
+      axios.post('/addColor', payload)
+      .then((success) => {
+        this.getData();
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    } else if (buttonID === 'Update Color') {
+      axios.post('/updateColor', payload)
+      .then((success) => {
+        this.getData();
+      })
+      .catch((error) => {
+        console.log(error, 'error in update')
+      })
+    }
 
   }
 

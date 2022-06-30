@@ -10,6 +10,17 @@ const post = (req, res) => {
   })
 }
 
+const update = (req, res) => {
+  console.log('update')
+  model.updateData(req.body)
+  .then((success) => {
+    res.status(201).send();
+  })
+  .catch((error) => {
+    res.status(409).send(error);
+  })
+}
+
 const get = (req, res) => {
   model.getData()
   .then((data) => {
@@ -20,7 +31,9 @@ const get = (req, res) => {
   })
 }
 
+
 module.exports = {
   post,
   get,
+  update,
 }

@@ -11,6 +11,11 @@ const ColorSubmitter = (props) => {
       }}>
         Add Color
       </button>
+      <button onClick={() => {
+        props.submitButton(event);
+      }}>
+        Update Color
+      </button>
       <ColorMapper
       textState={props.textState}
       listener={props.listener}
